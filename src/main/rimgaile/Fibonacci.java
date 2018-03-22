@@ -4,9 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Fibonacci {
-    private static final int MAX_FIBONACCI_INDEX = 94;
+    static final int MAX_FIBONACCI_INDEX = 94;
 
     public static void main(String[] args) {
+        long[] list = new long[MAX_FIBONACCI_INDEX];
         while (true) {
             try {
                 long n = readInputFromTerminal();
@@ -17,7 +18,8 @@ public class Fibonacci {
                 }
                 boolean isValid = validIndex(n);
                 if (isValid) {
-                    writeAnswerIntoTerminal(n);
+                    writeAnswerIntoTerminal(n, list);
+
                     break;
                 } else {
                     printInvalidIndexErrorMessage(n);
@@ -55,22 +57,20 @@ public class Fibonacci {
         System.out.println("Fibonacci didn't have " + n + " index. Try again!");
     }
 
-    public static void writeAnswerIntoTerminal(long n) {
+    public static void writeAnswerIntoTerminal(long n, long[] list) {
         if (n > 2) {
-            System.out.println("Fibonacci index " + n + " = " + nSkResult(n));
+            System.out.println("Fibonacci index " + n + " = " + nSkResult(n,list));
         } else {
             System.out.println("Fibonacci index " + n + " = 1");
         }
+        arrayOfFibonacci(n,list);
     }
 
 
-    public static long nSkResult(long n) {
+    public static long nSkResult(long n, long[] list) {
         long num1 = 1;
         long num2 = 1;
         long res = 0;
-        long[] list = new long[MAX_FIBONACCI_INDEX];
-        list[0] = num1;
-        list[1] = num2;
 
         for (int i = 2; i < n; i++) {
             res = num1 + num2;
@@ -78,10 +78,15 @@ public class Fibonacci {
             list[i] = res;
             num2 = res;
         }
-        for (int i=0; i<n; i++) {
-            System.out.println(list[i]);
-        }
 
         return res;
+    }
+
+    public static void arrayOfFibonacci (long n,long[] list) {
+        list[0] = list[1] = 1;
+        System.out.print("Fibonacci sequence: ");
+        for (int i=0; i<n; i++) {
+            System.out.print((list[i]) + " ");
+        }
     }
 }
