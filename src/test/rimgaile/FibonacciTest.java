@@ -27,8 +27,19 @@ public class FibonacciTest {
     public void indexInvalid () {
         Assert.assertEquals(false, Fibonacci.validIndex(95));
     }
+
     @Test
-    public void indexIsEdge () {
+    public void indexIsMaxEdge () {
         Assert.assertEquals(false, Fibonacci.validIndex(94));
+    }
+
+    @Test
+    public void fibonacciThirdIndex () {
+        Assert.assertEquals(2, Fibonacci.nSkResult(3));
+    }
+
+    @Test
+    public void fibonacciZero () {
+        Assert.assertEquals(0, Fibonacci.nSkResult(0));
     }
 }
