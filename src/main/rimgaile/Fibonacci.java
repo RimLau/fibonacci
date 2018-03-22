@@ -36,34 +36,21 @@ public class Fibonacci {
         return input.nextLong();
     }
 
-    public static boolean validIndex(long n) {
-        return n < MAX_FIBONACCI_INDEX;
-    }
-
     public static boolean isPositive(long n) {
         return n > 0;
     }
 
-    public static void printInvalidIndexErrorMessage(long n) {
-        System.out.println("System is not able to calculate your index " + n + ". " +
-                "Please enter less than the maximum " + MAX_FIBONACCI_INDEX + " index.");
-    }
-
-    public static void printInvalidInputErrorMessage() {
-        System.out.println("Invalid number or it's too long. Try again!");
-    }
-
-    public static void printNegativeInputErrorMessage(long n) {
-        System.out.println("Fibonacci didn't have " + n + " index. Try again!");
+    public static boolean validIndex(long n) {
+        return n < MAX_FIBONACCI_INDEX;
     }
 
     public static void writeAnswerIntoTerminal(long n, long[] list) {
         if (n > 2) {
-            System.out.println("Fibonacci index " + n + " = " + nSkResult(n,list));
+            System.out.println("Fibonacci index " + n + " = " + nSkResult(n, list));
         } else {
             System.out.println("Fibonacci index " + n + " = 1");
         }
-        arrayOfFibonacci(n,list);
+        arrayOfFibonacci(n, list);
     }
 
 
@@ -82,11 +69,24 @@ public class Fibonacci {
         return res;
     }
 
-    public static void arrayOfFibonacci (long n,long[] list) {
+    public static void arrayOfFibonacci(long n, long[] list) {
         list[0] = list[1] = 1;
         System.out.print("Fibonacci sequence: ");
-        for (int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             System.out.print((list[i]) + " ");
         }
+    }
+
+    public static void printInvalidIndexErrorMessage(long n) {
+        System.out.println("System is not able to calculate your index " + n + ". " +
+                "Please enter less than the maximum " + MAX_FIBONACCI_INDEX + " index.");
+    }
+
+    public static void printInvalidInputErrorMessage() {
+        System.out.println("Invalid number or it's too long. Try again!");
+    }
+
+    public static void printNegativeInputErrorMessage(long n) {
+        System.out.println("Fibonacci didn't have " + n + " index. Try again!");
     }
 }
