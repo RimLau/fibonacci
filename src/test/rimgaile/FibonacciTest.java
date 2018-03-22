@@ -3,6 +3,8 @@ package rimgaile;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static rimgaile.Fibonacci.MAX_FIBONACCI_INDEX;
+
 public class FibonacciTest {
     @Test
     public void isPositive () {
@@ -35,11 +37,13 @@ public class FibonacciTest {
 
     @Test
     public void fibonacciThirdIndex () {
-        Assert.assertEquals(2, Fibonacci.nSkResult(3));
+        long[] list = new long[MAX_FIBONACCI_INDEX];
+        Assert.assertEquals(2, Fibonacci.nSkResult(3, list));
     }
 
     @Test
     public void fibonacciZero () {
-        Assert.assertEquals(0, Fibonacci.nSkResult(0));
+        long[] list = new long[MAX_FIBONACCI_INDEX];
+        Assert.assertEquals(0, Fibonacci.nSkResult(0, list));
     }
 }
