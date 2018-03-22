@@ -63,16 +63,25 @@ public class Fibonacci {
         }
     }
 
+
     public static long nSkResult(long n) {
         long num1 = 1;
         long num2 = 1;
         long res = 0;
+        long[] list = new long[MAX_FIBONACCI_INDEX];
+        list[0] = num1;
+        list[1] = num2;
 
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 2; i < n; i++) {
             res = num1 + num2;
             num1 = num2;
+            list[i] = res;
             num2 = res;
         }
+        for (int i=0; i<n; i++) {
+            System.out.println(list[i]);
+        }
+
         return res;
     }
 }
