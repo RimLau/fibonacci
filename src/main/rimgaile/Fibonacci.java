@@ -9,11 +9,11 @@ public class Fibonacci {
     public static void main(String[] args) {
         long[] list = new long[MAX_FIBONACCI_INDEX];
 
-        long n = validate();
+        long n = getValidFibonacciIndex();
         writeAnswerIntoTerminal(n, list);
     }
 
-    public static long validate() {
+    public static long getValidFibonacciIndex() {
         long n;
         while (true) {
             try {
