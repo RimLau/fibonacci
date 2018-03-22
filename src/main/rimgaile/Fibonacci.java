@@ -8,25 +8,30 @@ public class Fibonacci {
 
     public static void main(String[] args) {
         long[] list = new long[MAX_FIBONACCI_INDEX];
+
+        long n = validate();
+        writeAnswerIntoTerminal(n, list);
+    }
+
+    public static long validate() {
+        long n;
         while (true) {
             try {
-                long n = readInputFromTerminal();
-                boolean isPositive = isPositive(n);
-                if (!isPositive) {
+                n = readInputFromTerminal();
+                if (!isPositive(n)) {
                     printNegativeInputErrorMessage(n);
                     continue;
                 }
-                boolean isValid = validIndex(n);
-                if (isValid) {
-                    writeAnswerIntoTerminal(n, list);
 
-                    break;
-                } else {
+                if (!validIndex(n)) {
                     printInvalidIndexErrorMessage(n);
+                    continue;
                 }
             } catch (InputMismatchException e) {
                 printInvalidInputErrorMessage();
+                continue;
             }
+            return n;
         }
     }
 
