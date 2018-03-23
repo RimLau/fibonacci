@@ -4,13 +4,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Fibonacci {
-    static final int MAX_FIBONACCI_INDEX = 94;
+    static final int MAX_FIBONACCI_INDEX = 93;
 
     public static void main(String[] args) {
         long[] list = new long[MAX_FIBONACCI_INDEX];
 
         long n = getValidFibonacciIndex();
         writeAnswerIntoTerminal(n, list);
+        arrayOfFibonacci(n, list);
     }
 
     public static long getValidFibonacciIndex() {
@@ -55,7 +56,7 @@ public class Fibonacci {
         } else {
             System.out.println("Fibonacci index " + n + " = 1");
         }
-        arrayOfFibonacci(n, list);
+
     }
 
 
