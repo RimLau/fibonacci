@@ -6,6 +6,8 @@ import org.junit.Test;
 import static rimgaile.Fibonacci.MAX_FIBONACCI_INDEX;
 
 public class FibonacciTest {
+    long[] list = new long[MAX_FIBONACCI_INDEX];
+
     @Test
     public void isPositive () {
         Assert.assertTrue(Fibonacci.isPositive(1));
@@ -32,18 +34,16 @@ public class FibonacciTest {
 
     @Test
     public void indexIsMaxEdge () {
-        Assert.assertFalse(Fibonacci.validIndex(94));
+        Assert.assertFalse(Fibonacci.validIndex(MAX_FIBONACCI_INDEX));
     }
 
     @Test
     public void fibonacciThirdIndex () {
-        long[] list = new long[MAX_FIBONACCI_INDEX];
         Assert.assertEquals(2, Fibonacci.nSkResult(3, list));
     }
 
     @Test
     public void fibonacciZero () {
-        long[] list = new long[MAX_FIBONACCI_INDEX];
         Assert.assertEquals(0, Fibonacci.nSkResult(0, list));
     }
 }
