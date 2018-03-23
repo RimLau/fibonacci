@@ -2,7 +2,7 @@ package rimgaile;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+/*
 public class SumOfDigitsTest {
     @Test
     public void divide() {
@@ -14,3 +14,4 @@ public class SumOfDigitsTest {
 }
 
 
+*/
