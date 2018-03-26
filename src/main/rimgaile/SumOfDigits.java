@@ -6,11 +6,10 @@ public class SumOfDigits {
     public static void main(String[] args) {
         int value = readFromFile();
         writeIntoConsole(value);
-
     }
 
     public static int readFromFile() {
-        BufferedReader br = null;
+        BufferedReader br;
         int value = 0;
         String line;
         try {
@@ -21,14 +20,6 @@ public class SumOfDigits {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
         return value;
     }
