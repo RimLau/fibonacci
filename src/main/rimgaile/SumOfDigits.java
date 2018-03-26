@@ -1,21 +1,38 @@
 package rimgaile;
 
-import java.util.Scanner;
+import java.io.*;
 
 public class SumOfDigits {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter integer number:");
-        int number = input.nextInt();
-
-        System.out.println(sumOfNumber(number));
+        int value = readFromFile();
+        writeIntoConsole(value);
     }
 
-    public static int sumOfNumber(int number) {
+    public static int readFromFile() {
+        BufferedReader br;
+        int value = 0;
+        String line;
+        try {
+            String fileName = "src/main/rimgaile/fileForSumOfDigits.txt";
+            br = new BufferedReader(new FileReader(fileName));
+            while ((line = br.readLine()) != null) {
+                value = Integer.parseInt(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    public static void writeIntoConsole (int value) {
+        System.out.println("lala: " + value);
+        System.out.println(sumOfNumber(value));
+    }
+    public static int sumOfNumber(int value) {
         int sum = 0;
-        while (number != 0) {
-            sum = number % 10 + sum;
-            number = number / 10;
+        while (value != 0) {
+            sum = value % 10 + sum;
+            value = value / 10;
         }
         return sum;
     }
