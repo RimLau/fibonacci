@@ -10,17 +10,21 @@ public class SumOfDigits {
         //int number = input.nextInt();
         //System.out.println(sumOfNumber(number));
 
-file();
+        int value = file();
+        System.out.println("lala: " + value);
+        System.out.println(sumOfNumber(value));
+
     }
 
-    public static String file() {
+    public static int file() {
         BufferedReader br = null;
-        String line = null;
+        int value = 0;
+        String line;
         try {
             String fileName = "C:\\Users\\RimgaileLauzadyte\\Documents\\personalProjects\\fibonacci\\src\\main\\rimgaile\\fileForSumOfDigits.txt";
             br = new BufferedReader(new FileReader(fileName));
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
+                value = Integer.parseInt(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,14 +37,14 @@ file();
                 ex.printStackTrace();
             }
         }
-        return line;
+        return value;
     }
 
-    public static int sumOfNumber(int number) {
+    public static int sumOfNumber(int value) {
         int sum = 0;
-        while (number != 0) {
-            sum = number % 10 + sum;
-            number = number / 10;
+        while (value != 0) {
+            sum = value % 10 + sum;
+            value = value / 10;
         }
         return sum;
     }
