@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-
-        System.out.println("Exercise 1:");
-        System.out.println("Hello, World!\nRimgailė");
-        System.out.println("Exercise 2-3:");
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your first number:");
-        int num1 = input.nextInt();
-        System.out.println("Enter your second number:");
-        int num2 = input.nextInt();
-        System.out.println("Enter operator:");
-        String operator = input.next();
 
+        int num1 = readFirstNum(input);
+        int num2 = readSecondNum(input);
+        String operator = readOperator(input);
+
+        writeResultIntoConsole(num1, num2, operator);
+
+    }
+
+    public static void writeResultIntoConsole(int num1, int num2, String operator) {
         int results = 0;
         try {
             results = calculate(num1, num2, operator);
@@ -26,6 +25,26 @@ public class Calculator {
         }
 
         System.out.println(results);
+    }
+
+    public static int readFirstNum(Scanner input) {
+        System.out.println("Enter your first number:");
+        int num1 = input.nextInt();
+
+        return num1;
+    }
+
+    public static int readSecondNum(Scanner input) {
+        System.out.println("Enter your second number:");
+        int num2 = input.nextInt();
+
+        return num2;
+    }
+
+    public static String readOperator(Scanner input) {
+        System.out.println("Enter operator:");
+        String operator = input.next();
+        return operator;
     }
 
     public static int calculate(int num1, int num2, String operator) throws Exception {
@@ -45,7 +64,6 @@ public class Calculator {
         } else {
             throw new Exception("Wrong operation");
         }
-
         return answer;
     }
 }
