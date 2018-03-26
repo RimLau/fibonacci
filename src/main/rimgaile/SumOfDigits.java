@@ -21,7 +21,7 @@ public class SumOfDigits {
         int value = 0;
         String line;
         try {
-            String fileName = "C:\\Users\\RimgaileLauzadyte\\Documents\\personalProjects\\fibonacci\\src\\main\\rimgaile\\fileForSumOfDigits.txt";
+            String fileName = "src/main/rimgaile/fileForSumOfDigits.txt";
             br = new BufferedReader(new FileReader(fileName));
             while ((line = br.readLine()) != null) {
                 value = Integer.parseInt(line);
