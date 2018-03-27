@@ -1,42 +1,49 @@
 package rimgaile;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SumOfDigits {
+    private static final String FILE_NAME = "src/main/rimgaile/fileForSumOfDigits.txt";
+
     public static void main(String[] args) {
-        int value = readFromFile();
-        writeIntoConsole(value);
+        List<Integer> listOfValues = readFromFile();
+        for (Integer value : listOfValues) {
+            writeIntoConsole(value);
+        }
     }
 
-    public static int readFromFile() {
+    private static List<Integer> readFromFile() {
         BufferedReader br;
-        int value = 0;
-        String line = null;
+        String line;
+        List<Integer> listOfValues = new ArrayList<Integer>();
         try {
-            String fileName = "src/main/rimgaile/fileForSumOfDigits.txt";
-            br = new BufferedReader(new FileReader(fileName));
-          try {
-                while ((line = br.readLine()) != null) {
-                    value = Integer.parseInt(line);
-                }
-            }
-            catch (NumberFormatException e) {
-                printInvalidInputErrorMessage(line);
+            br = new BufferedReader(new FileReader(FILE_NAME));
+            while ((line = br.readLine()) != null) {
+                listOfValues.add(tryParseInt(line));
             }
         } catch (IOException e) {
-            e.printStackTrace();
-
+            System.out.println("File not found");
         }
-
-        return value;
+        return listOfValues;
     }
 
-    public static void writeIntoConsole (int value) {
+    private static int tryParseInt(String line) {
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            printInvalidInputErrorMessage(line);
+            return 0;
+        }
+    }
+
+    private static void writeIntoConsole(int value) {
         System.out.println("Number: " + value);
         System.out.println("The sum of the numbers: " + sumOfNumber(value));
     }
 
-    public static int sumOfNumber(int value) {
+    static int sumOfNumber(int value) {
         int sum = 0;
         while (value != 0) {
             sum = value % 10 + sum;
@@ -44,7 +51,8 @@ public class SumOfDigits {
         }
         return sum;
     }
-    public static void printInvalidInputErrorMessage(String line) {
+
+    private static void printInvalidInputErrorMessage(String line) {
         System.out.println("Invalid number - " + line + ". Try again!");
     }
 }

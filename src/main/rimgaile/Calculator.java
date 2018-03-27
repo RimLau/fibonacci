@@ -4,28 +4,34 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-
-        System.out.println("Exercise 1:");
-        System.out.println("Hello, World!\nRimgailė");
-        System.out.println("Exercise 2-3:");
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your first number:");
-        int num1 = input.nextInt();
-        System.out.println("Enter your second number:");
-        int num2 = input.nextInt();
-        System.out.println("Enter operator:");
-        String operator = input.next();
 
-        int results = 0;
+        int num1 = readNumber(input, "Enter Your first number");
+        int num2 = readNumber(input, "Enter your second number");
+        String operator = readString(input, "Enter operator:");
+        System.out.println("Result: " + getResult(num1, num2, operator));
+    }
+
+    public static int getResult(int num1, int num2, String operator) {
+        int result = 0;
         try {
-            results = calculate(num1, num2, operator);
+            result = calculate(num1, num2, operator);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return result;
+    }
 
-        System.out.println(results);
+    public static int readNumber(Scanner input, String text) {
+        System.out.println(text);
+        return input.nextInt();
+    }
+
+    public static String readString(Scanner input, String text) {
+        System.out.println(text);
+        return input.next();
     }
 
     public static int calculate(int num1, int num2, String operator) throws Exception {
@@ -45,7 +51,6 @@ public class Calculator {
         } else {
             throw new Exception("Wrong operation");
         }
-
         return answer;
     }
 }
